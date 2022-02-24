@@ -5,7 +5,14 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AccountIdIsNull</shortDescription>
-        <value>Account id is null</value>
+        <value>Account id is null.</value>
+    </labels>
+     <labels>
+        <fullName>AccountIdIsInvalid</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AccountIdIsInvalid</shortDescription>
+        <value>Account Id is invalid. Asset hierarchy component should be placed in Account Page.</value>
     </labels>
     <labels>
         <fullName>NoAssetHierarchyMessage</fullName>

@@ -40,8 +40,15 @@ public with sharing class AssetHierarchyController {
        
         List<Asset> listOfAssets = new List<Asset>();
         if(accountId!=null){
-            listOfAssets = [SELECT AccountId,Id,Name,ParentId,Product2Id,Product2.Family,Product2.Name,ProductCode,RootAssetId FROM Asset where AccountId =: accountId];
-        }else{
+            if(String.valueOf(accountId).startsWith('001')){
+                listOfAssets = [SELECT AccountId,Id,Name,ParentId,Product2Id,Product2.Family,Product2.Name,ProductCode,RootAssetId FROM Asset where AccountId =: accountId];
+            }else{
+                AuraHandledException ex = new AuraHandledException(Label.AccountIdIsInvalid);
+                ex.setMessage(Label.AccountIdIsInvalid);
+                throw ex;
+            }
+        }
+        else{
             AuraHandledException ex = new AuraHandledException(Label.AccountIdIsNull);
             ex.setMessage(Label.AccountIdIsNull);
             throw ex;
