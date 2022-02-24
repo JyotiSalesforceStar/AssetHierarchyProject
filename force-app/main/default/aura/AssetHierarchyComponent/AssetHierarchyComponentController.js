@@ -3,11 +3,7 @@
         helper.getAccountsAssetHierarchy(cmp,event,helper);
     },
     
-    expandAllAssets: function(cmp, event,helper) {
-        helper.expandAllAssets(cmp, event,helper);
-    },
-    
-    collapseAllAssets: function(cmp, event,helper) {
-        helper.collapseAllAssets(cmp, event,helper);
+    expandCollapseAllAssets: function(cmp, event,helper) {
+        helper.expandCollapseAllAssets(cmp, event,helper);
     }
 })

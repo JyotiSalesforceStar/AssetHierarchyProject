@@ -1,6 +1,5 @@
 ({
     getAccountsAssetHierarchy : function (cmp,event,helper) {
-        //can we pull it from custom metadata 
         var columns = [
             {
                 type: 'text',
@@ -39,28 +38,47 @@
                     cmp.set("v.gridColumns", columns);
                     cmp.set("v.gridData", parsedData);
                 }
+            } else if (state === "INCOMPLETE") {
+                // do something
             }
-            // error handling when state is "INCOMPLETE" or "ERROR"
+                else if (state === "ERROR") {
+                    var errors = response.getError();
+                    if (errors) {
+                        if (errors[0] && errors[0].message) {
+                            // log the error passed in to AuraHandledException
+                            var toastEvent = $A.get("e.force:showToast");
+                            toastEvent.setParams({
+                                title : 'Error',
+                                message: errors[0].message,
+                                duration:' 5000',
+                                key: 'info_alt',
+                                type: 'error',
+                                mode: 'pester'
+                            });
+                            toastEvent.fire();
+                        }
+                    } else {
+                        console.log("Unknown error");
+                    }
+                }
         });
         $A.enqueueAction(action);
     },
     
-    expandAllAssets: function(cmp, event,helper) {
+    expandCollapseAllAssets: function(cmp, event,helper) {
         let button = event.getSource();
         button.set('v.disabled',true);
-        let button1 = cmp.find('collapseAllId');
-        button1.set('v.disabled',false);        
+        var buttonName = event.getSource().get("v.name"); // return myButton
+        let button1;
         var tree = cmp.find('mytree');
-        tree.expandAll();        
-    },
-    
-    collapseAllAssets: function(cmp, event,helper) {
-        
-        let button = event.getSource();
-        button.set('v.disabled',true);
-        let button1 = cmp.find('expandAllId');
-        button1.set('v.disabled',false);        
-        var tree = cmp.find('mytree');
-        tree.collapseAll();
-    },
+        if(buttonName === 'Expand All'){
+            button1 = cmp.find('collapseAllId');
+            tree.expandAll(); 
+        }else{
+            button1 = cmp.find('expandAllId');
+            tree.collapseAll();
+        }
+        button1.set('v.disabled',false);   
+   }    
+  
 })

@@ -13,8 +13,8 @@
     <aura:if isTrue="{!v.gridDataIsExists}">
         <div class="slds-card">
             <div class="slds-card__body slds-card__body_inner slds-p-top_medium"> 
-                <lightning:button variant="brand" aura:id="expandAllId" class="slds-button slds-button_brand" label="Expand All" title="Expand All" onclick="{!c.expandAllAssets }" />
-                <lightning:button variant="brand" aura:id="collapseAllId" disabled="true" class="slds-button slds-button_brand" label="Collapse All" title="Collapse All" onclick="{!c.collapseAllAssets }" />
+                <lightning:button variant="brand" name="Expand All" aura:id="expandAllId" class="slds-button slds-button_brand" label="Expand All" title="Expand All" onclick="{!c.expandCollapseAllAssets }" />
+                <lightning:button variant="brand" name= "Collapse All" aura:id="collapseAllId" disabled="true" class="slds-button slds-button_brand" label="Collapse All" title="Collapse All" onclick="{!c.expandCollapseAllAssets }" />
             </div>
         </div>
         <lightning:treeGrid
