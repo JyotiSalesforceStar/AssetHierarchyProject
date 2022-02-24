@@ -43,12 +43,25 @@ public without sharing class AssetHierarchyControllerTest {
     } 
     
     @istest 
-    public static void getAssetsHierarchyTest(){        
+    public static void getAssetsHierarchyTestPositive(){        
        	Test.startTest();
         Account acc = [select id from Account where Name='Test Account' limit 1];
         List <AssetHierarchyController.HierarchyWrapperClass> resultReturned = AssetHierarchyController.getAssetsHierarchy(acc.id);
         System.assert(resultReturned!=null);
         System.assertEquals(1, resultReturned.size());
+        Test.stopTest();
+    }
+    
+    //negative Testcase
+     @istest 
+    public static void getAssetsHierarchyTestNegative(){        
+       	Test.startTest();
+        try{
+        	List <AssetHierarchyController.HierarchyWrapperClass> resultReturned = AssetHierarchyController.getAssetsHierarchy(null);
+        }
+        catch(AuraHandledException e){
+            System.assertEquals(Label.AccountIdIsNull,e.getMessage());
+        }       
         Test.stopTest();
     }
 }
