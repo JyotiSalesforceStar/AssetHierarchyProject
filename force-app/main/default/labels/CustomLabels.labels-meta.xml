@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>AccountIdIsNull</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AccountIdIsNull</shortDescription>
+        <value>Account id is null</value>
+    </labels>
+    <labels>
+        <fullName>NoAssetHierarchyMessage</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>NoAssetHierarchyMessage</shortDescription>
+        <value>No Assets accociated with this Account.</value>
+    </labels>
+    <labels>
+        <fullName>SalesforceLogoDescription</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SalesforceLogoDescription</shortDescription>
+        <value>Salesforce Logo</value>
+    </labels>
+</CustomLabels>
