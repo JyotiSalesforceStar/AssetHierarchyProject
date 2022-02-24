@@ -1,0 +1,37 @@
+<aura:component controller="AssetHierarchyController" implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    <aura:attribute name="gridColumns" type="List" />
+    <aura:attribute name="gridData" type="Object" />
+    <aura:attribute name="gridDataIsExists" type="boolean" default="false"/>
+    
+    <div class="slds-card">
+        <div class="slds-card__body slds-card__body_inner slds-p-top_medium">
+            <h2 class="slds-page-header__title slds-m-right_small slds-align-middle slds-truncate">
+                <lightning:icon iconName="standard:hierarchy" alternativeText="Asset Hierarchy"/> Asset Hierarchy
+            </h2>  
+      
+    <aura:if isTrue="{!v.gridDataIsExists}">
+        <div class="slds-card">
+            <div class="slds-card__body slds-card__body_inner slds-p-top_medium"> 
+                <lightning:button variant="brand" aura:id="expandAllId" class="slds-button slds-button_brand" label="Expand All" title="Expand All" onclick="{!c.expandAllAssets }" />
+                <lightning:button variant="brand" aura:id="collapseAllId" disabled="true" class="slds-button slds-button_brand" label="Collapse All" title="Collapse All" onclick="{!c.collapseAllAssets }" />
+            </div>
+        </div>
+        <lightning:treeGrid
+                            columns="{! v.gridColumns }"
+                            data="{! v.gridData }"
+                            keyField="Name"
+                            aura:id="mytree"
+                            hideCheckboxColumn = "true"
+                            />
+        <aura:set attribute="else">
+            <div class="slds-card">
+                <div class="slds-card__body slds-card__body_inner slds-p-top_medium">  
+                   <h2>{!$Label.c.NoAssetHierarchyMessage}</h2> 
+                </div>
+            </div>
+        </aura:set>
+    </aura:if>
+              </div>
+    </div>
+</aura:component>
